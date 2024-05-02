@@ -8,8 +8,10 @@ type Token struct {
 }
 
 const (
-	ILLEGAL = "ILLEGAL" // 表示遇到未知的词法单元或字符
-	EOF     = "EOF"     // 表示文件结尾
+	// 表示遇到未知的词法单元或字符
+	ILLEGAL = "ILLEGAL"
+	// 表示文件结尾
+	EOF = "EOF"
 
 	// 标识符 + 字面量
 	IDENT = "IDENT"
