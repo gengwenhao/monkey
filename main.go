@@ -1,15 +1,21 @@
-// main 方法必须要在 main 包里面
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"monkey/repl"
+	"os"
+	user2 "os/user"
+)
 
-import "rsc.io/quote"
-
-// 无参数无返回值
 func main() {
-	fmt.Println(quote.Go())
-}
+	user, err := user2.Current()
+	if err != nil {
+		panic(err)
+	}
 
-// go run main.go 就可以执行
-// 如果文件不叫 main.go 则需要 go build 得到可运行的文件，
-// 直接运行即可
+	fmt.Printf("Hello %s! This is the monkey programming language!\n", user.Username)
+	fmt.Printf("Fell free to type in commands\n")
+
+	// 接入标准输入输出
+	repl.Start(os.Stdin, os.Stdout)
+}
