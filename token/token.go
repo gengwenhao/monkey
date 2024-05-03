@@ -1,12 +1,15 @@
 package token
 
+// TokenType 词法类型
 type TokenType string
 
+// Token 词法单元
 type Token struct {
 	Type    TokenType
 	Literal string
 }
 
+// 词法单元的常量表示
 const (
 	// 表示遇到未知的词法单元或字符
 	ILLEGAL = "ILLEGAL"
@@ -47,6 +50,7 @@ const (
 	RETURN   = "RETURN"
 )
 
+// 关键字
 var keywords = map[string]TokenType{
 	"fn":     FUNCTION,
 	"let":    LET,

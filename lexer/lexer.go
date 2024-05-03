@@ -39,7 +39,7 @@ func (l *Lexer) readChar() {
 	l.readPosition += 1
 }
 
-// 读入下一个 token
+// NextToken 读入下一个 token
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
