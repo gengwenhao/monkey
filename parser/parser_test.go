@@ -32,7 +32,7 @@ let foobar = 838383;
 		{"foobar"},
 	}
 	for i, tt := range tests {
-		stms := program.Statements[i]
+		stmt := program.Statements[i]
 		if !testLetStatement(t, stmt, tt.expectedIdentifier) {
 			return
 		}
