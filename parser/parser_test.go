@@ -21,7 +21,10 @@ let foobar = 838383;
 		t.Fatalf("ParseProgram() return nil")
 	}
 	if len(program.Statements) != 3 {
-		t.Fatalf("program.Statements does not contains 3 statements. got=%d", len(program.Statements))
+		t.Fatalf(
+			"program.Statements does not contains 3 statements. got=%d",
+			len(program.Statements),
+		)
 	}
 
 	tests := []struct {
@@ -57,7 +60,11 @@ func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
 	}
 
 	if letStmt.Name.TokenLiteral() != name {
-		t.Errorf("letStmt.Name.TokenLiteral() not '%s'. got=%s", name, letStmt.Name.TokenLiteral())
+		t.Errorf(
+			"letStmt.Name.TokenLiteral() not '%s'. got=%s",
+			name,
+			letStmt.Name.TokenLiteral(),
+		)
 		return false
 	}
 

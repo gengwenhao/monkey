@@ -4,7 +4,8 @@ import "monkey/token"
 
 // Node 是 Statement 和 Expression 必须实现的接口
 type Node interface {
-	TokenLiteral() string
+	// TokenLiteral 这个方法仅仅用于调试和测试
+	TokenLiteral() string // TokenLiteral 存储了字符串源码（关联的词法单元字面量）
 }
 
 // Statement 语句
@@ -35,22 +36,7 @@ func (p *Program) TokenLiteral() string {
 	}
 }
 
-// LetStatement Let 语句
-type LetStatement struct {
-	Token token.Token // token.LET 词法单元
-	Name  *Identifier
-	Value Expression
-}
-
-// 语句节点
-func (ls *LetStatement) statementNode() {
-	// todo
-}
-
-func (ls *LetStatement) TokenLiteral() string {
-	return ls.Token.Literal
-}
-
+// Identifier 标识符
 type Identifier struct {
 	Token token.Token // token.IDENT 词法单元
 	Value string

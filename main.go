@@ -13,7 +13,14 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Printf("Hello %s! This is the monkey programming language!\n", user.Username)
+	name := ""
+	if user.Name != "" {
+		name = user.Name
+	} else {
+		name = user.Username
+	}
+
+	fmt.Printf("Hello %s! This is the monkey programming language!\n", name)
 	fmt.Printf("Fell free to type in commands\n")
 
 	// 接入标准输入输出

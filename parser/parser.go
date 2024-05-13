@@ -1,3 +1,9 @@
+// Package parser
+// 语法分析器的任务，
+// 反复前移词法单元指针并检查当前词法单元，
+// 以决定下一步的操作。
+// 下一步操作可能是调用另一个解析函数，
+// 也可能是抛出错误。
 package parser
 
 import (
@@ -24,12 +30,12 @@ func New(l *lexer.Lexer) *Parser {
 	return p
 }
 
+// 前移到下一个 Token
 func (p *Parser) nextToken() {
 	p.curToken = p.peekToken
 	p.peekToken = p.l.NextToken()
 }
 
-// 解析语句
 func (p *Parser) parseStatement() ast.Statement {
 	switch p.curToken.Type {
 	case token.LET:
