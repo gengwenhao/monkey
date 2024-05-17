@@ -1,11 +1,16 @@
 package ast
 
-import "monkey/token"
+import (
+	"bytes"
+	"monkey/token"
+)
 
 // Node 是 Statement 和 Expression 必须实现的接口
 type Node interface {
 	// TokenLiteral 这个方法仅仅用于调试和测试
 	TokenLiteral() string // TokenLiteral 存储了字符串源码（关联的词法单元字面量）
+
+	String() string // String 方法既可以在调试时打印 AST 节点，也可以用来比较 AST 节点
 }
 
 // Statement 语句
@@ -36,6 +41,16 @@ func (p *Program) TokenLiteral() string {
 	}
 }
 
+func (p *Program) String() string {
+	var out bytes.Buffer
+
+	for _, s := range p.Statements {
+		out.WriteString(s.String())
+	}
+
+	return out.String()
+}
+
 // Identifier 标识符
 type Identifier struct {
 	Token token.Token // token.IDENT 词法单元
@@ -48,4 +63,8 @@ func (i *Identifier) expressionNode() {
 
 func (i *Identifier) TokenLiteral() string {
 	return i.Token.Literal
+}
+
+func (i *Identifier) String() string {
+	return i.Value
 }
