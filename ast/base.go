@@ -68,3 +68,21 @@ func (i *Identifier) TokenLiteral() string {
 func (i *Identifier) String() string {
 	return i.Value
 }
+
+// IntegerLiteral 数值字面量类型
+type IntegerLiteral struct {
+	Token token.Token
+	Value int64
+}
+
+func (il *IntegerLiteral) expressionNode() {
+	//
+}
+
+func (il *IntegerLiteral) TokenLiteral() string {
+	return il.Token.Literal
+}
+
+func (il *IntegerLiteral) String() string {
+	return il.Token.Literal
+}
